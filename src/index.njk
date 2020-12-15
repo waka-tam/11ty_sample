@@ -1,0 +1,20 @@
+---
+layout: main.njk
+title: トップページ | 11tyサンプル
+description: ページ説明文
+---
+
+{% block main -%}
+<h1>Hello World!</h1>
+<p>11ty（eleventy）のデモサイトです。</p>
+<p>Micro cmsと連携させて利用するテストをしています</p>
+<p>現状はNunjucksというテンプレートエンジンを使ってるけど、なかなか扱いがわからん…</p>
+
+<p>ほんとはPugにしたいから、これから調べる。</p>
+<p>以下は動的テキストです。</p>
+
+<h2 id="title"></h2>
+<div id="body"></div>
+
+<div id="blog"></div>
+{% endblock -%}

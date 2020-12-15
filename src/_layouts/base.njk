@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>{{ title }}</title>
+{% include "head.njk" %}
+  {# {% if site.env %}
+    <!-- capture the CSS content as a Liquid variable -->
+    {% set css %}{% include "app.compiled.css" %}{% endset %}
+    <style> 
+      {{ css | safe }}
+    </style>
+  {% else %}
+  <link rel="stylesheet" href="/static/app.compiled.css">
+  {% endif %} #}
+  <link rel="stylesheet" href="/assets/css/common.css">
+</head>
+
+<body>
+  {% include "header.njk" %}
+  {{ content | safe }}
+
+  <script>
+  fetch("https://waka-demo.microcms.io/api/v1/news/pbbn5gynv", {
+    headers: {
+      "X-API-KEY": "d318078c-b136-438f-9c26-de351cf82e6f"
+    }
+  })
+  .then(res => res.json())
+  .then(json => {
+    document.getElementById("title").innerHTML = json.title;
+    document.getElementById("body").innerHTML = json.body;
+  });
+
+  fetch("https://waka-demo.microcms.io/api/v1/blog/9h-7whmbo", {
+    headers: {
+      "X-API-KEY": "d318078c-b136-438f-9c26-de351cf82e6f"
+    }
+  })
+  .then(res => res.json())
+  .then(json => {
+    document.getElementById("blog").innerHTML = json.blog;
+  });
+  </script>
+</body>
+</html>

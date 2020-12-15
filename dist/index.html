@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>トップページ | 11tyサンプル</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ページ説明文">
+  
+  <link rel="stylesheet" href="/assets/css/common.css">
+</head>
+
+<body>
+  <header class="here_is_header"></header>
+  
+<main>
+  
+<h1>Hello World!</h1>
+<p>11ty（eleventy）のデモサイトです。</p>
+<p>Micro cmsと連携させて利用するテストをしています</p>
+<p>現状はNunjucksというテンプレートエンジンを使ってるけど、なかなか扱いがわからん…</p>
+
+<p>ほんとはPugにしたいから、これから調べる。</p>
+<p>以下は動的テキストです。</p>
+
+<h2 id="title"></h2>
+<div id="body"></div>
+
+<div id="blog"></div>
+
+  <p class="txt--red">ここはmain.njkのコンテンツ</p>
+</main>
+
+  <script>
+  fetch("https://waka-demo.microcms.io/api/v1/news/pbbn5gynv", {
+    headers: {
+      "X-API-KEY": "d318078c-b136-438f-9c26-de351cf82e6f"
+    }
+  })
+  .then(res => res.json())
+  .then(json => {
+    document.getElementById("title").innerHTML = json.title;
+    document.getElementById("body").innerHTML = json.body;
+  });
+
+  fetch("https://waka-demo.microcms.io/api/v1/blog/9h-7whmbo", {
+    headers: {
+      "X-API-KEY": "d318078c-b136-438f-9c26-de351cf82e6f"
+    }
+  })
+  .then(res => res.json())
+  .then(json => {
+    document.getElementById("blog").innerHTML = json.blog;
+  });
+  </script>
+</body>
+</html>
